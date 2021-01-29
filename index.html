@@ -68,7 +68,8 @@
                         <input id="firstClassTicket" class="inp-style inp-width" type="number" value="0">
                     </div>
                     <div class="plus-minus-btn">
-                        <p><span onclick="updateTicket('firstClass', true)">+</span> <span onclick="updateTicket('firstClass', false)">-</span></p>
+                        <p><button onclick="updateTicket('firstClass', true)">+</button> <button
+                                onclick="updateTicket('firstClass', false)">-</button></p>
                     </div>
                 </div>
                 <div class="input-group f-class">
@@ -77,7 +78,7 @@
                         <input id="economyTicket" class="inp-style inp-width" type="number" value="0">
                     </div>
                     <div class="plus-minus-btn">
-                        <p> <span onclick="updateTicket('economy', true)">+</span> <span onclick="updateTicket('economy', false)">-</span> </p>
+                        <p> <button onclick="updateTicket('economy', true)">+</button> <button onclick="updateTicket('economy', false)">-</button> </p>
                     </div>
                 </div>
 
@@ -117,20 +118,20 @@
     <!--Thank You-->
 </body>
 <script>
-    function updateTicket(ticketClass, isIncrease){ 
+    function updateTicket(ticketClass, isIncrease) {
         const ticket = ticketInput(ticketClass);
         let ticketNumber = ticket;
-        if(isIncrease == true){
+        if (isIncrease == true) {
             ticketNumber = ticket + 1;
         }
-        if(isIncrease == false && ticketNumber > 0){
+        if (isIncrease == false && ticketNumber > 0) {
             ticketNumber = ticket - 1;
         }
         document.getElementById(ticketClass + 'Ticket').value = ticketNumber;
         totalCount()
     }
 
-    function totalCount(){
+    function totalCount() {
         const firstClassTicket = ticketInput('firstClass');
         const economyTicket = ticketInput('economy');
         const subTotal = firstClassTicket * 150 + economyTicket * 100;
@@ -142,7 +143,7 @@
         document.getElementById('totalAmount').innerText = totalAmount;
     }
 
-    function ticketInput (ticketClass){
+    function ticketInput(ticketClass) {
         const inputNumber = document.getElementById(ticketClass + 'Ticket');
         const ticketNumber = parseInt(inputNumber.value);
         return ticketNumber;
