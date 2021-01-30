@@ -125,6 +125,33 @@
             <p>Your booking is successful</p>
             <i id="filled" class="fas fa-check-circle"></i>
         </div>
+        <div class="customerSms">
+            <div class="smsInformation">
+                <div>
+                    <p>First Class Tickets</p>
+                </div>
+                <div>
+                    <p id="firstTicketNumbers">0</p>
+                </div>
+            </div>
+            <div class="smsInformation">
+                <div>
+                    <p>Economy Tickets</p>
+                </div>
+                <div>
+                    <p id="economyTicketNumbers">0</p>
+                </div>
+            </div>
+            <div class="smsInformation">
+                <div>
+                    <p>Total Cost with VAT</p>
+                </div>
+                <div>
+                    <p>$ <span id="costWithVat">0</span></p>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!--Thank You-->
@@ -155,6 +182,10 @@
         document.getElementById('taxAmount').innerText = taxAmount;
         const totalAmount = subTotal + taxAmount;
         document.getElementById('totalAmount').innerText = totalAmount;
+
+        // this is for total cost with vat in "Book Now" button.
+        document.getElementById('costWithVat').innerText = totalAmount;
+
     }
 
     // This is for... are the tickets first class or economy? 
@@ -170,8 +201,12 @@
         mainContainer.style.display = 'none';
         const booking = document.getElementById('booking');
         booking.style.display = 'block';
-    })
 
+        const firstClassTicket = ticketInput('firstClass');
+        document.getElementById('firstTicketNumbers').innerText = firstClassTicket;
+        const economyTicket = ticketInput('economy');
+        document.getElementById('economyTicketNumbers').innerText = economyTicket;
+    })
     // Thank You
 </script>
 
