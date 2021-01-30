@@ -11,6 +11,8 @@
         rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
 </head>
 
 <body>
@@ -37,7 +39,7 @@
         </div>
 
 
-        <div class="booking-form">
+        <div id="bookingForm" class="booking-form">
             <h3>Explore By Bus</h3>
 
             <div class="inputs">
@@ -68,8 +70,9 @@
                         <input id="firstClassTicket" class="inp-style inp-width" type="number" value="0">
                     </div>
                     <div class="plus-minus-btn">
-                        <p><button onclick="updateTicket('firstClass', true)">+</button> <button
-                                onclick="updateTicket('firstClass', false)">-</button></p>
+                        <p><button onclick="updateTicket('firstClass', true)"><i class="fas fa-plus"></i></button>
+                            <button onclick="updateTicket('firstClass', false)"><i class="fas fa-minus"></i></button>
+                        </p>
                     </div>
                 </div>
                 <div class="input-group f-class">
@@ -78,7 +81,8 @@
                         <input id="economyTicket" class="inp-style inp-width" type="number" value="0">
                     </div>
                     <div class="plus-minus-btn">
-                        <p> <button onclick="updateTicket('economy', true)">+</button> <button onclick="updateTicket('economy', false)">-</button> </p>
+                        <p> <button onclick="updateTicket('economy', true)"><i class="fas fa-plus"></i></button> <button
+                                onclick="updateTicket('economy', false)"><i class="fas fa-minus"></i></button> </p>
                     </div>
                 </div>
 
@@ -111,13 +115,22 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="bookNow" class="btn-style">Book Now</button>
+        </div>
+    </main>
+
+    <!-- This is for successful message of booking. -->
+    <main id="booking" class="container">
+        <div id="bookingButton">
+            <p>Your booking is successful</p>
+            <i id="filled" class="fas fa-check-circle"></i>
         </div>
     </main>
 
     <!--Thank You-->
 </body>
 <script>
+    // This is for Increase and Decrease of ticket numbers.
     function updateTicket(ticketClass, isIncrease) {
         const ticket = ticketInput(ticketClass);
         let ticketNumber = ticket;
@@ -131,6 +144,7 @@
         totalCount()
     }
 
+    // This is for Sub Total, Tax and Total.
     function totalCount() {
         const firstClassTicket = ticketInput('firstClass');
         const economyTicket = ticketInput('economy');
@@ -143,11 +157,22 @@
         document.getElementById('totalAmount').innerText = totalAmount;
     }
 
+    // This is for... are the tickets first class or economy? 
     function ticketInput(ticketClass) {
         const inputNumber = document.getElementById(ticketClass + 'Ticket');
         const ticketNumber = parseInt(inputNumber.value);
         return ticketNumber;
-    } 
+    }
+
+    // This is for "Book Now" button.
+    document.getElementById('bookNow').addEventListener('click', function () {
+        const mainContainer = document.getElementById('bookingForm');
+        mainContainer.style.display = 'none';
+        const booking = document.getElementById('booking');
+        booking.style.display = 'block';
+    })
+
+    // Thank You
 </script>
 
 </html>
